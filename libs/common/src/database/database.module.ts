@@ -1,9 +1,7 @@
 import { Module } from '@nestjs/common';
-import { MongooseModule } from '@nestjs/mongoose';
+import { ModelDefinition, MongooseModule } from '@nestjs/mongoose';
 import { ConfigModule } from '../config/config.module';
 import { ConfigService } from '@nestjs/config';
-import { ConfigurableModuleClass } from '@nestjs/common/cache/cache.module-definition';
-
 @Module({
   imports: [
     MongooseModule.forRootAsync({
@@ -15,4 +13,8 @@ import { ConfigurableModuleClass } from '@nestjs/common/cache/cache.module-defin
     }),
   ],
 })
-export class DatabaseModule extends ConfigurableModuleClass {}
+export class DatabaseModule {
+  static forFeature(models: ModelDefinition[]) {
+    return MongooseModule.forFeature(models);
+  }
+}
