@@ -3,14 +3,14 @@ import {
   ConfigService,
   ConfigModule as NestConfigModule,
 } from '@nestjs/config';
-import * as Joi from 'Joi';
+// import * as Joi from 'Joi';
 
 @Module({
   imports: [
     NestConfigModule.forRoot({
-      validationSchema: Joi.object({
-        MONGODB_URI: Joi.string().required(),
-      }),
+      // validationSchema: Joi.object({
+      //   MONGODB_URI: Joi.string().required(),
+      // }),
     }),
   ],
   providers: [ConfigService],
